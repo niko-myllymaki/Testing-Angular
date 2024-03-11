@@ -1,0 +1,26 @@
+<p>Works!</p>
+<button 
+    class="button" 
+    (click)="addText(box.value, true); box.value = ''"
+    [ngClass]="{'green' : toggle, 'red' : !toggle}">
+    {{enable?"ON":"OFF"}}
+</button>
+
+<input #box placeholder="Press The Button"/>
+
+<p>{{ value }}</p>
+
+<div>
+    <input #enterKey placeholder="Press Enter" 
+    (keyup.enter)="addText(enterKey.value, false); enterKey.value = ''"/>   
+</div>
+
+<div>
+    <p>Adds input and the last element in the list together and adds the result to the list.</p>
+    <input #enterKeyAnother placeholder="Press Enter"
+    (keyup.enter)="addToLast(enterKeyAnother.value); enterKeyAnother.value = ''"/>
+</div>
+
+<ul>
+    <li *ngFor="let text of textArr">{{text}} <button class="button" (click)="onClickDelete(text);">Delete</button></li>
+</ul>
